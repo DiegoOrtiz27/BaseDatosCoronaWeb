@@ -9,7 +9,7 @@ app.use(cors())
 app.use(bodyParser.urlencoded({extended: true}))
 
 // Ajustes
-app.set('port',3001);
+app.set('port',process.env.PORT || 3001);
 
 // Middlewares
 app.use(express.json());
