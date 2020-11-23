@@ -73,8 +73,8 @@ router.put('/actor/:id', (req, res) => {
   });
 });
 
-router.delete('/delete', (req, res) => {
-  const { correo } = req.params;
+router.delete('/delete/:correo', (req, res) => {
+  const { correo} = req.params;
   mysqlConnection.query('DELETE FROM usuario WHERE correo = ?',
    [correo], (err, rows, fields) => {
     if(!err) {
