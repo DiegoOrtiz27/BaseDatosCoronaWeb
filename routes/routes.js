@@ -25,6 +25,23 @@ router.post('/',(req,res)=>{
 
 });
 
+router.delete('/',(req,res)=>{
+  const {correo,contraseña} = req.body;
+  let user = [correo,contraseña];
+  let borrar = "SELECT * FROM usuario WHERE correo = ? AND contraseña = ?";
+  mysqlConnection.query(borrar, user, (err, results, fields) => {
+    if (err) {
+      res.send({err:err});
+    } 
+      if (results.length>0){
+        res.send(results)
+        res.status(200).send({ success: true })
+      }else{
+        res.send({message: `Correo y/o Contraseña incorrecto`})
+      }
+    });
+});
+
 /*------------REGISTER------------- */
 router.post('/register/',(req,res)=>{
 const {userName,correo,contraseña} = req.body;
