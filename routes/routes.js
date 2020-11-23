@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const mysqlConnection  = require('../db/db');
-router.get('/',(req,res)=>{
+router.get('/welcome',(req,res)=>{
   res.send('Welcome to my api');
 })
 /*------------LOGIN------------- */
@@ -73,10 +73,10 @@ router.put('/actor/:id', (req, res) => {
   });
 });
 
-router.delete('/actor/:id', (req, res) => {
-  const { id } = req.params;
+router.delete('/delete', (req, res) => {
+  const { correo } = req.params;
   mysqlConnection.query('DELETE FROM actores WHERE id = ?',
-   [id], (err, rows, fields) => {
+   [correo], (err, rows, fields) => {
     if(!err) {
       res.json({status: 'Estudiante eliminado!'});
     } else {
