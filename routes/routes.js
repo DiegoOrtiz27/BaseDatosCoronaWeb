@@ -2,7 +2,9 @@ const express = require('express');
 const router = express.Router();
 
 const mysqlConnection  = require('../db/db');
-
+router.get('/',(req,res)=>{
+  res.send('Welcome to my api');
+})
 /*------------LOGIN------------- */
 router.post('/',(req,res)=>{
   const {correo,contraseña} = req.body;
