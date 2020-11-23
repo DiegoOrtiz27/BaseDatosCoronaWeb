@@ -75,10 +75,10 @@ router.put('/actor/:id', (req, res) => {
 
 router.delete('/delete', (req, res) => {
   const { correo } = req.params;
-  mysqlConnection.query('DELETE FROM actores WHERE id = ?',
+  mysqlConnection.query('DELETE FROM usuario WHERE correo = ?',
    [correo], (err, rows, fields) => {
     if(!err) {
-      res.json({status: 'Estudiante eliminado!'});
+      res.json({status: 'Usuario eliminado!'});
     } else {
       console.log(err);
     }
